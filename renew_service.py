@@ -126,7 +126,7 @@ def renew_service(page):
         log("✅ 'Create Invoice' 按钮已点击。")
 
         log("步骤 3: 正在等待发票页面加载并查找 'Pay' 按钮...")
-        pay_button = page.locator('a:has-text("Pay"), button:has-text("Pay")').first
+        pay_button = page.locator('button[type="submit"]:has-text("Pay")').first
         pay_button.wait_for(state="visible", timeout=90000)
         
         log("✅ 'Pay' 按钮已找到，正在点击...")
