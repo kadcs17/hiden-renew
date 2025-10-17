@@ -26,12 +26,7 @@ with sync_playwright() as p:
             "server": "https://72.213.88.134:443",   # 代理服务器地址
         }
     )
-    context = browser.new_context()
-    page = context.new_page()
-    page.goto("https://www.ipinfo.io/ip")
-    print(page.content())
-    browser.close()
-    
+
 def log(message):
     """打印带时间戳的日志"""
     print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {message}", flush=True)
