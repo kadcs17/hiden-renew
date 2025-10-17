@@ -27,6 +27,21 @@ def login(page):
     2. 如果 Cookie 失效或不存在，则使用账号密码进行登录。
     """
     log("开始登录流程...")
+from playwright.sync_api import sync_playwright
+
+with sync_playwright() as p:
+    browser = p.chromium.launch(
+        headless=False,
+        proxy={
+            "server": "https://72.213.88.134:443",   # 代理服务器地址
+        }
+    )
+    context = browser.new_context()
+    page = context.new_page()
+    page.goto("https://www.ipinfo.io/ip")
+    print(page.content())
+    browser.close()
+
 
     # --- 方案一：Cookie 登录 ---
     if HIDENCLOUD_COOKIE:
