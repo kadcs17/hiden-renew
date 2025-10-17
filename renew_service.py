@@ -16,17 +16,7 @@ SERVICE_URL = f"{BASE_URL}/service/73732/manage"
 # Cookie 名称
 COOKIE_NAME = "remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d"
 
-def log(message):
-    """打印带时间戳的日志"""
-    print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {message}", flush=True)
 
-def login(page):
-    """
-    处理登录逻辑。
-    1. 优先尝试使用 Cookie 登录。
-    2. 如果 Cookie 失效或不存在，则使用账号密码进行登录。
-    """
-    log("开始登录流程...")
 from playwright.sync_api import sync_playwright
 
 with sync_playwright() as p:
@@ -41,6 +31,19 @@ with sync_playwright() as p:
     page.goto("https://www.ipinfo.io/ip")
     print(page.content())
     browser.close()
+    
+def log(message):
+    """打印带时间戳的日志"""
+    print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {message}", flush=True)
+
+def login(page):
+    """
+    处理登录逻辑。
+    1. 优先尝试使用 Cookie 登录。
+    2. 如果 Cookie 失效或不存在，则使用账号密码进行登录。
+    """
+    log("开始登录流程...")
+
 
 
     # --- 方案一：Cookie 登录 ---
