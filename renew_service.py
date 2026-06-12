@@ -11,7 +11,7 @@ HIDENCLOUD_PASSWORD = os.environ.get('HIDENCLOUD_PASSWORD')
 # 目标网页 URL
 BASE_URL = "https://dash.hidencloud.com"
 LOGIN_URL = f"{BASE_URL}/auth/login"
-SERVICE_URL = f"{BASE_URL}/service/76243/manage"
+SERVICE_URL = f"{BASE_URL}/service/219652/manage"
 
 # Cookie 名称
 COOKIE_NAME = "remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d"
@@ -22,10 +22,7 @@ from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
     browser = p.chromium.launch(
         headless=True,
-        proxy={
-            "server": "https://72.213.88.134:443",   # 代理服务器地址
-        }
-    )
+
 
 def log(message):
     """打印带时间戳的日志"""
